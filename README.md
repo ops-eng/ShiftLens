@@ -2,6 +2,8 @@
 
 ## **Shift Calendar — Built for the Heroes of Every Schedule**
 
+![ShiftLens Calendar](images/ShiftLens-iOS-Default-1024x1024@1x.png)
+
 Shift work isn’t just a job. It’s a lifestyle.  
 Whether you’re a doctor saving lives at 3 AM, a nurse powering through a double shift, a firefighter on call, a retail worker keeping the city moving, or a technician making sure everything runs smoothly — **your time matters**.
 
