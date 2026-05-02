@@ -1,1 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ShiftLens Help Manual</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, -system-ui,
+                   "Segoe UI", sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 2rem;
+      max-width: 900px;
+    }
+    h1, h2, h3, h4 {
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    h1 { font-size: 2rem; margin-top: 0; }
+    h2 { font-size: 1.6rem; margin-top: 2rem; }
+    h3 { font-size: 1.3rem; margin-top: 1.5rem; }
+    h4 { font-size: 1.1rem; margin-top: 1.2rem; }
+    ul, ol { padding-left: 1.5rem; }
+    code { font-family: Menlo, Monaco, Consolas, "SF Mono", monospace; }
+    hr { margin: 2rem 0; }
+  </style>
+</head>
+<body>
 
+<h1>ShiftLens Help Manual</h1>
+<p>This manual documents ShiftLens behavior for iPhone and iPad, including feature differences, calculations, limits, and troubleshooting.</p>
+
+<h2>1. App Overview</h2>
+<p>ShiftLens is a shift calendar app with three primary work areas:</p>
+<ul>
+  <li>Calendar</li>
+  <li>Stats</li>
+  <li>Insights</li>
+</ul>
+<p>It supports:</p>
+<ul>
+  <li>Multiple calendars/jobs</li>
+  <li>Shift templates and rotations</li>
+  <li>Notes, tags, availability status</li>
+  <li>Optional map/location data</li>
+  <li>Optional iCloud sync</li>
+  <li>In-app purchases for ShiftLens Pro</li>
+</ul>
+
+<h2>2. Navigation and Layout</h2>
+
+<h3>iPhone</h3>
+<ul>
+  <li>Main navigation is a tab bar:
+    <ul>
+      <li>Calendar</li>
+      <li>Stats</li>
+      <li>Insights</li>
+    </ul>
+  </li>
+  <li>Top-right controls in main views:
+    <ul>
+      <li>Theme menu (<code>...</code>)</li>
+      <li>Settings (gear icon)</li>
+    </ul>
+  </li>
+  <li>Day details open as a bottom sheet/modal from Calendar.</li>
+</ul>
+
+<h3>iPad</h3>
+<ul>
+  <li>Uses <code>NavigationSplitView</code> with:
+    <ul>
+      <li>Sidebar (Calendar, Stats, Insights, Settings)</li>
+      <li>Detail content pane</li>
+    </ul>
+  </li>
+  <li>In Calendar landscape wide mode, the screen splits approximately:
+    <ul>
+      <li>55% calendar pane (left)</li>
+      <li>45% day details pane (right)</li>
+    </ul>
+  </li>
+  <li>In narrower iPad width, day details can appear in sheet-style flow.</li>
+</ul>
+
+<h2>3. Appearance and Theme</h2>
+<p>Theme is controlled by app settings and can be changed quickly:</p>
+<ul>
+  <li>iPhone: <code>...</code> menu in top bar</li>
+  <li>iPad: Theme picker in sidebar</li>
+</ul>
+<p>Theme choices:</p>
+<ul>
+  <li>Light</li>
+  <li>Dark</li>
+</ul>
+<p>The app applies the selected theme globally using app-level color scheme preference.</p>
+
+<h2>4. Calendar Screen</h2>
+
+<h3>4.1 Monthly Calendar</h3>
+<p>The month view includes:</p>
+<ul>
+  <li>Month title with previous/next month controls</li>
+  <li>Weekday headers</li>
+  <li>Day grid</li>
+  <li>Shift indicators per day</li>
+  <li>Today shortcut</li>
+  <li>Add Shift button</li>
+</ul>
+<p>Each day can show:</p>
+<ul>
+  <li>Shift indicators (visual dots/markers)</li>
+  <li>Availability markers</li>
+  <li>Other status hints (depending on your data)</li>
+</ul>
+
+<h3>4.2 Day Selection Behavior</h3>
+<ul>
+  <li>Tap a day to view/edit details.</li>
+  <li>iPhone: opens Day Details sheet.</li>
+  <li>iPad (wide): updates right-hand Day Details pane.</li>
+</ul>
+
+<h2>5. Day Details</h2>
+<p>Day Details is the operational center for one date.</p>
+<p>Sections can include:</p>
+<ul>
+  <li>Conflicts</li>
+  <li>Calendar selector</li>
+  <li>Shifts list</li>
+  <li>Shift Actions</li>
+  <li>Availability</li>
+  <li>Custom Fields (Pro)</li>
+  <li>Multi-day Plans/Blocks (Pro)</li>
+  <li>Location (Pro)</li>
+  <li>Tags</li>
+  <li>Notes</li>
+</ul>
+
+<h3>5.1 Calendar Selector</h3>
+<p>Choose which calendar/job this day entry belongs to.</p>
+
+<h3>5.2 Shifts List</h3>
+<p>Shows all shifts assigned to the selected day.</p>
+<p>You can:</p>
+<ul>
+  <li>Add shift</li>
+  <li>Delete shift</li>
+</ul>
+
+<h3>5.3 Shift Actions</h3>
+<p>Available actions include:</p>
+<ul>
+  <li>Add Shift</li>
+  <li>Duplicate Previous</li>
+  <li>Bulk Apply</li>
+  <li>Apply Template</li>
+  <li>Apply Rotation</li>
+  <li>Apply Pattern</li>
+  <li>Clear All</li>
+</ul>
+
+<h4>Bulk Apply durations</h4>
+<p>Supported durations:</p>
+<ul>
+  <li>2, 3, 4, 5, 6, 7, 10, 14, 18, 21, 28, 30, 45, 60 days</li>
+</ul>
+<p>Free tier applies shorter limits; Pro unlocks full range.</p>
+
+<h3>5.4 Availability</h3>
+<p>Availability status options:</p>
+<ul>
+  <li>Available</li>
+  <li>Unavailable</li>
+  <li>Sick Leave</li>
+  <li>Time Off</li>
+</ul>
+
+<h3>5.5 Custom Fields (Pro)</h3>
+<p>Per-calendar custom fields can be configured and populated per date.</p>
+
+<h3>5.6 Multi-day Plans (Pro)</h3>
+<p>Create a work block spanning multiple days.</p>
+<p>Supported durations:</p>
+<ul>
+  <li>2, 3, 4, 5, 6, 7, 10, 12, 14, 21, 28, 30, 60, 90, 120, 180, 365 days</li>
+</ul>
+
+<h3>5.7 Location (Pro)</h3>
+<p>Add location text and optional map preview for a day.</p>
+
+<h3>5.8 Notes and Tags</h3>
+<ul>
+  <li>Add free-text notes to the day</li>
+  <li>Add tags to classify shifts/day context</li>
+</ul>
+
+<h3>5.9 Clear All</h3>
+<p>Removes all day-specific content for selected date, including:</p>
+<ul>
+  <li>Shifts</li>
+  <li>Availability</li>
+  <li>Active work blocks</li>
+  <li>Tags</li>
+  <li>Location data</li>
+</ul>
+
+<h2>6. Settings</h2>
+<p>Settings includes multiple operational sections.</p>
+
+<h3>6.1 Pro Section</h3>
+<p>Shows entitlement state:</p>
+<ul>
+  <li>Free</li>
+  <li>ShiftLens Pro</li>
+</ul>
+<p>Actions:</p>
+<ul>
+  <li>Upgrade</li>
+  <li>Manage subscription (where applicable)</li>
+  <li>Restore purchases</li>
+</ul>
+
+<h3>6.2 Profile</h3>
+<p>Set display name used in profile-related places.</p>
+
+<h3>6.3 Workflow Shortcuts</h3>
+<p>Navigation to managers:</p>
+<ul>
+  <li>Manage Shifts</li>
+  <li>Manage Templates</li>
+  <li>Manage Rotations</li>
+</ul>
+
+<h3>6.4 Visible Calendars</h3>
+<p>Per-calendar controls:</p>
+<ul>
+  <li>Rename calendar</li>
+  <li>Toggle visibility</li>
+</ul>
+<p>Free tier limits how many calendars can be actively visible/managed.</p>
+
+<h3>6.5 Appearance</h3>
+<p>Options include:</p>
+<ul>
+  <li>Theme</li>
+  <li>Calendar appearance mode</li>
+  <li>Map preview toggle</li>
+  <li>Chart animation toggle</li>
+</ul>
+
+<h3>6.6 Shift Notifications (Pro)</h3>
+<p>Options:</p>
+<ul>
+  <li>Enable/disable notifications</li>
+  <li>Lead time preset</li>
+</ul>
+<p>Lead time presets include short and long windows up to 30 days.</p>
+
+<h3>6.7 Conflict Rules (Pro)</h3>
+<p>Configurable constraints:</p>
+<ul>
+  <li>Conflict rules on/off</li>
+  <li>Max shifts per day</li>
+  <li>Minimum rest hours</li>
+  <li>Maximum weekly hours</li>
+</ul>
+
+<h3>6.8 Custom Fields and Tags</h3>
+<ul>
+  <li>Configure custom fields per calendar</li>
+  <li>Manage reusable tags</li>
+</ul>
+<p>Some tag editing capabilities are Pro-gated.</p>
+
+<h3>6.9 Sync (Pro)</h3>
+<ul>
+  <li>iCloud sync can be enabled/disabled</li>
+  <li>Local-only workflow is supported if sync is off</li>
+</ul>
+
+<h2>7. Manage Shifts</h2>
+<p>Create and edit shift types with:</p>
+<ul>
+  <li>Name</li>
+  <li>Color</li>
+  <li>Start and end hour</li>
+  <li>Break duration</li>
+  <li>Optional SF Symbol icon</li>
+</ul>
+<p>You can also set a default shift type for quick actions.</p>
+<p>Free tier has a smaller shift-type limit; Pro raises this limit.</p>
+
+<h2>8. Manage Templates</h2>
+<p>Template fields typically include:</p>
+<ul>
+  <li>Template name</li>
+  <li>Shift type</li>
+  <li>Optional location</li>
+  <li>Optional tags</li>
+</ul>
+<p>Use templates from Day Details to apply consistent entries quickly.</p>
+
+<h2>9. Manage Rotations</h2>
+<p>Build repeating sequences of shift types.</p>
+<p>Workflow:</p>
+<ul>
+  <li>Create rotation</li>
+  <li>Add shift types to sequence in order</li>
+  <li>Apply from Day Details</li>
+</ul>
+<p>Free tier has a smaller rotation limit; Pro unlocks more.</p>
+
+<h2>10. Stats</h2>
+<p>Stats view provides workload analytics by period.</p>
+<p>Content includes:</p>
+<ul>
+  <li>Summary cards (total, night, weekend, overtime)</li>
+  <li>Period bars</li>
+  <li>Workload ring</li>
+  <li>Metric detail sheet</li>
+</ul>
+<p>Date-range options are broader in Pro.</p>
+
+<h3>Export</h3>
+<ul>
+  <li>Free: upgrade prompt</li>
+  <li>Pro:
+    <ul>
+      <li>Share text report</li>
+      <li>Share ICS schedule</li>
+      <li>Generate/share PDF report</li>
+    </ul>
+  </li>
+</ul>
+
+<h2>11. Insights</h2>
+<p>Insights are generated from your shift data and shown as cards.</p>
+
+<h3>11.1 Insight Card Actions</h3>
+<p>Each card supports:</p>
+<ul>
+  <li>Help (<code>?</code>) button</li>
+  <li>Dismiss</li>
+</ul>
+
+<h4>Help behavior</h4>
+<ul>
+  <li>iPad: popover anchored to card control</li>
+  <li>iPhone: medium sheet presentation for readability</li>
+</ul>
+
+<h4>Dismiss behavior</h4>
+<ul>
+  <li>Dismiss hides the card from current visible set.</li>
+  <li>Dismissed card state is local and tied to card identity/content.</li>
+</ul>
+
+<h3>11.2 How Insights Re-generate</h3>
+<p>Insights are re-generated automatically when underlying data changes.</p>
+<p>A dismissed card can reappear when:</p>
+<ul>
+  <li>Its underlying message changes due to new data</li>
+  <li>You use Restore Insights when all visible cards are dismissed</li>
+</ul>
+<p>Also:</p>
+<ul>
+  <li>If all current cards are dismissed, a Restore Insights action is shown.</li>
+</ul>
+
+<h3>11.3 Free vs Pro Insights</h3>
+<p>Free tier shows a subset (up to 3 cards).</p>
+<p>Current free set:</p>
+<ul>
+  <li>Next 7 Days</li>
+  <li>Monthly Summary</li>
+  <li>Suggestions</li>
+</ul>
+<p>Pro unlocks additional insights.</p>
+
+<h3>11.4 Insight Definitions and Calculation Basis</h3>
+
+<h4>Next 7 Days</h4>
+<p><strong>What it shows:</strong></p>
+<ul>
+  <li>Planned hours in next 7 days</li>
+  <li>Number of planned shifts</li>
+  <li>Longest run of consecutive work days in that 7-day window</li>
+</ul>
+<p><strong>How data is produced:</strong></p>
+<ul>
+  <li>Scans upcoming 7 calendar days</li>
+  <li>Counts visible planned shifts</li>
+  <li>Sums estimated shift hours</li>
+  <li>Computes longest consecutive run of days containing at least one shift</li>
+</ul>
+
+<h4>Monthly Summary</h4>
+<p><strong>What it shows:</strong></p>
+<ul>
+  <li>Current month total hours</li>
+  <li>Night hours</li>
+  <li>Weekend hours</li>
+  <li>Overtime hours</li>
+</ul>
+<p><strong>How data is produced:</strong></p>
+<ul>
+  <li>Scans shifts in the current calendar month</li>
+  <li>Classifies each shift by time/day rules</li>
+  <li>Aggregates category totals</li>
+</ul>
+
+<h4>Suggestions</h4>
+<p><strong>What it shows:</strong></p>
+<ul>
+  <li>Simple practical recommendation based on near-term schedule</li>
+</ul>
+<p><strong>How data is produced:</strong></p>
+<ul>
+  <li>Uses rule-based checks around upcoming/off days and load patterns</li>
+  <li>Generates plain-language advice text</li>
+</ul>
+
+<h4>Patterns (Pro)</h4>
+<p><strong>What it shows:</strong></p>
+<ul>
+  <li>Repetition hints in current month scheduling</li>
+</ul>
+<p><strong>How data is produced:</strong></p>
+<ul>
+  <li>Compares day-to-day shift signatures</li>
+  <li>Detects repeated sequences or frequent identical patterns</li>
+</ul>
+
+<h4>Rest &amp; Fatigue (Pro)</h4>
+<p><strong>What it shows:</strong></p>
+<ul>
+  <li>Warning-style hints for long streaks or short rest windows</li>
+</ul>
+<p><strong>How data is produced:</strong></p>
+<ul>
+  <li>Evaluates consecutive work-day runs</li>
+  <li>Evaluates gap between shift end/start times</li>
+  <li>Applies configured thresholds</li>
+</ul>
+
+<h4>Conflicts (Pro)</h4>
+<p><strong>What it shows:</strong></p>
+<ul>
+  <li>Potential schedule conflicts requiring review</li>
+</ul>
+<p><strong>How data is produced:</strong></p>
+<ul>
+  <li>Applies conflict rules (max/day, min rest, weekly limits)</li>
+  <li>Summarizes any breaches</li>
+</ul>
+
+<h4>Longest Upcoming Streak (Pro)</h4>
+<p><strong>What it shows:</strong></p>
+<ul>
+  <li>Maximum consecutive upcoming work-day run</li>
+</ul>
+<p><strong>How data is produced:</strong></p>
+<ul>
+  <li>Scans next 14 days</li>
+  <li>Counts consecutive days with at least one planned shift</li>
+  <li>Returns maximum streak length</li>
+</ul>
+
+<h4>Overtime Pace (Pro)</h4>
+<p><strong>What it shows:</strong></p>
+<ul>
+  <li>Whether overtime is trending up/down this month</li>
+  <li>Projected month-end overtime estimate</li>
+</ul>
+<p><strong>How data is produced:</strong></p>
+<ul>
+  <li>Reads overtime accumulated so far in current month</li>
+  <li>Computes elapsed-day pace</li>
+  <li>Projects end-of-month overtime using current pace</li>
+</ul>
+
+<h4>Weekend Load Trend (Pro)</h4>
+<p><strong>What it shows:</strong></p>
+<ul>
+  <li>Weekend workload trend compared to previous month</li>
+</ul>
+<p><strong>How data is produced:</strong></p>
+<ul>
+  <li>Computes current month weekend hours</li>
+  <li>Computes previous month weekend hours</li>
+  <li>Reports difference and trend direction</li>
+</ul>
+
+<h2>12. Monetization and Plans</h2>
+<p>ShiftLens currently supports:</p>
+<ul>
+  <li>Monthly subscription</li>
+  <li>Yearly subscription</li>
+  <li>Lifetime purchase</li>
+</ul>
+<p>Use Restore Purchases when access is missing after reinstall/device change.</p>
+
+<h2>13. Known Platform Behaviors</h2>
+<ul>
+  <li>iPad layout adapts to available width; pane behavior changes with size class and width.</li>
+  <li>Popovers and sheets differ between iPhone and iPad by system UI rules.</li>
+  <li>Some iPad full-screen interactions are intentionally sidebar-first for native behavior.</li>
+</ul>
+
+<h2>14. Troubleshooting</h2>
+
+<h3>14.1 Insights card missing</h3>
+<ul>
+  <li>Check if it was dismissed</li>
+  <li>Use Restore Insights</li>
+  <li>Ensure enough schedule data exists for that insight type</li>
+  <li>Check Pro entitlement for Pro-only cards</li>
+</ul>
+
+<h3>14.2 Theme not changing</h3>
+<ul>
+  <li>Confirm selection in theme control</li>
+  <li>Ensure no conflicting system overrides in current test mode</li>
+</ul>
+
+<h3>14.3 Missing Pro features after purchase</h3>
+<ul>
+  <li>Use Restore Purchases</li>
+  <li>Reopen app</li>
+  <li>Verify product environment (local StoreKit config vs App Store/TestFlight)</li>
+</ul>
+
+<h3>14.4 iPad detail pane too narrow/wide</h3>
+<ul>
+  <li>Behavior depends on window width and split layout mode</li>
+  <li>In wider landscape, app uses explicit calendar/detail split</li>
+</ul>
+
+<h2>15. Feature Availability Summary</h2>
+
+<p><strong>Free:</strong></p>
+<ul>
+  <li>2 Shift types</li>
+  <li>1 Template</li>
+  <li>1 Rotation</li>
+  <li>Bulk apply up to 7 days</li>
+  <li>3 Insights Cards</li>
+  <li>Stats: This Week, This Month</li>
+</ul>
+
+<p><strong>Pro:</strong></p>
+<ul>
+  <li>Unlimited Shift types</li>
+  <li>Unlimited Templates</li>
+  <li>Unlimited Rotations</li>
+  <li>Bulk apply up to 90 days</li>
+  <li>Full Insights Suite</li>
+  <li>Stats: This Week, This Month, This Year</li>
+  <li>Exports (Share, Text, ICS, PDF Reports)</li>
+  <li>Shift reminders</li>
+  <li>Conflict rules</li>
+  <li>iCloud sync</li>
+  <li>Custom fields and Multi-Day plans</li>
+</ul>
+
+<hr />
+
+<p>If you want, this manual can be split into an in-app Help Center format next (searchable sections + quick links + FAQ cards).</p>
+
+<h2>16. New Features and Setup Notes</h2>
+
+<h3>16.1 Lock Screen Next Shift Widget</h3>
+<p>ShiftLens includes an inline Lock Screen widget that shows your next shift countdown.</p>
+<p><strong>How to activate:</strong></p>
+<ol>
+  <li>Make sure at least one future shift exists.</li>
+  <li>Open ShiftLens once after creating/updating shifts.</li>
+  <li>On iPhone Lock Screen, long-press the screen.</li>
+  <li>Tap <strong>Customize</strong> → <strong>Lock Screen</strong> → <strong>Add Widgets</strong>.</li>
+  <li>Select <strong>ShiftLens</strong> and choose the inline widget.</li>
+  <li>Tap <strong>Done</strong>.</li>
+</ol>
+<p>If the widget shows <strong>No upcoming shift</strong>:</p>
+<ul>
+  <li>Verify future shifts are scheduled.</li>
+  <li>Open the app once to refresh shared widget data.</li>
+  <li>Remove and re-add the widget if it remains stale.</li>
+</ul>
+
+<h3>16.2 Weekly Overtime Threshold</h3>
+<p>The <strong>Weekly overtime threshold</strong> in Settings controls when overtime starts being counted in Stats.</p>
+<ul>
+  <li>Example: if threshold is <code>40h</code>, hours above that weekly pace contribute to overtime.</li>
+  <li>You can tune this to match your contract or policy.</li>
+  <li>In current plan rules, this threshold is Pro-only.</li>
+</ul>
+
+<h3>16.3 Pro Access and Paywall</h3>
+<p>ShiftLens uses StoreKit products for Pro:</p>
+<ul>
+  <li>Monthly</li>
+  <li>Yearly</li>
+  <li>Lifetime</li>
+</ul>
+<p>After purchase/restore:</p>
+<ul>
+  <li>Pro status is applied automatically.</li>
+  <li>Locked features become available immediately.</li>
+  <li>If something remains locked, use <strong>Restore Purchases</strong> and reopen the app.</li>
+</ul>
+
+<h3>16.4 Free Plan Lock Behavior</h3>
+<p>When you hit a Free limit:</p>
+<ul>
+  <li>Create actions are disabled in relevant screens.</li>
+  <li>A lock message explains the limit and points to upgrade.</li>
+  <li>Existing data remains visible; only gated actions are blocked.</li>
+</ul>
+
+<h3>16.5 Export Availability</h3>
+<p>Exports are Pro-only:</p>
+<ul>
+  <li>Text report</li>
+  <li>ICS schedule</li>
+  <li>PDF report</li>
+</ul>
+<p>In Free, Stats shows an upgrade prompt in the Export section.</p>
+
+</body>
+</html>
