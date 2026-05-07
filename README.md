@@ -2,7 +2,7 @@
 
 ## **Shift Calendar — Built for the Heroes of Every Schedule**
 
-![ShiftLens Calendar](images/ShiftLens-iOS-Default-1024x1024@1x.png)
+![ShiftLens Calendar](images/iPad%20Landscape%20Home.png)
 
 Shift work isn’t just a job. It’s a lifestyle.  
 Whether you’re a doctor saving lives at 3 AM, a nurse powering through a double shift, a firefighter on call, a retail worker keeping the city moving, or a technician making sure everything runs smoothly — **your time matters**.
@@ -24,5 +24,14 @@ Doctors, nurses, EMTs, police officers, hospitality staff, factory workers, airp
 ### **Own your time. Master your routine.**
 Shift Calendar gives you clarity, control, and confidence over your work-life rhythm.  
 Because your schedule shouldn’t be chaos — it should be **power**.
+
+### For iPhone too:
+
+![ShiftLens Calendar](images/ShiftLens-iOS-Defaulr-1024x1.png)
+
+### Get it:
+
+![ShiftLens Calendar](images/ShiftLens2.png)
+
 
 ---
