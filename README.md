@@ -27,11 +27,13 @@ Because your schedule shouldn’t be chaos — it should be **power**.
 
 ### For iPhone too:
 
-![ShiftLens Calendar](images/ShiftLens-iOS-Defaulr-1024x1.png)
+![ShiftLens Calendar](images/ShiftLens-iphone.png)
+
+---
 
 ### Get it:
 
-![ShiftLens Calendar](images/ShiftLens2.png)
+![ShiftLens Calendar](images/ShiftLens1.png)
 
 
 ---
